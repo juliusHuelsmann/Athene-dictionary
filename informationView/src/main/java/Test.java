@@ -19,41 +19,34 @@ public class Test extends JFrame {
       super("GradientTranslucentWindow");
       Shape shape = new Shape() {
         
-        @Override
         public boolean intersects(double x, double y, double w, double h) {
           // TODO Auto-generated method stub
           return false;
         }
         
-        @Override
         public boolean intersects(Rectangle2D r) {
           // TODO Auto-generated method stub
           return false;
         }
         
-        @Override
         public PathIterator getPathIterator(AffineTransform at, double flatness) {
           // TODO Auto-generated method stub
           return null;
         }
         
-        @Override
         public PathIterator getPathIterator(AffineTransform at) {
           // TODO Auto-generated method stub
           return null;
         }
         
-        @Override
         public Rectangle2D getBounds2D() {
           return rectB;
         }
         
-        @Override
         public Rectangle getBounds() {
           return rectB;
         }
         
-        @Override
         public boolean contains(double x, double y, double w, double h) {
          
           for (int i = 0; i < w; i++) {
@@ -66,17 +59,14 @@ public class Test extends JFrame {
           return false;
         }
         
-        @Override
         public boolean contains(double x, double y) {
           return b[(int) x][(int) y];
         }
         
-        @Override
         public boolean contains(Rectangle2D r) {
           return contains(r.getX(), r.getY(), r.getWidth(), r.getHeight());
         }
         
-        @Override
         public boolean contains(Point2D p) {
           return contains(p.getX(), p.getY());
         }
@@ -133,7 +123,6 @@ public class Test extends JFrame {
 
         // Create the GUI on the event-dispatching thread
         SwingUtilities.invokeLater(new Runnable() {
-            @Override
             public void run() {
               Test gtw = new
                   Test();

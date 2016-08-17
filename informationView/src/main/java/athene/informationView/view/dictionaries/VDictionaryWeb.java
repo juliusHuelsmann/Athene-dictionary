@@ -53,7 +53,6 @@ public abstract class VDictionaryWeb extends JFXPanel implements VDictionary {
   public final void display(final String xword) {
 
     Platform.runLater(new Runnable() {
-        @Override
         public void run() {
           if (b != null && b.isReady()) {
             b.loadPage(getURL(xword));
@@ -88,7 +87,6 @@ public abstract class VDictionaryWeb extends JFXPanel implements VDictionary {
   /**
    * Return the JFXPanel.
    */
-  @Override
   public Container getPanel() {
     return this;
   }
@@ -139,7 +137,6 @@ public abstract class VDictionaryWeb extends JFXPanel implements VDictionary {
     super.setOpaque(false);
     super.setSize(xsize);
     Platform.runLater(new Runnable() {
-        @Override
         public void run() {
 
           b = new Browser(getSize(), demandMobileVersion(), getZoomFactor());

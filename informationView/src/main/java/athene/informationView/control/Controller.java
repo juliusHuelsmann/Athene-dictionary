@@ -77,7 +77,6 @@ public class Controller implements WindowFocusListener, ActionListener{
         // TODO Auto-generated method stub
         return 0.8;
       }
-      @Override
       public Object getIdentifier() {
         // TODO Auto-generated method stub
         return "D";
@@ -100,7 +99,6 @@ public class Controller implements WindowFocusListener, ActionListener{
         // TODO Auto-generated method stub
         return 0.9;
       }
-      @Override
       public Object getIdentifier() {
         // TODO Auto-generated method stub
         return "W";
@@ -123,7 +121,6 @@ public class Controller implements WindowFocusListener, ActionListener{
         // TODO Auto-generated method stub
         return 0.9;
       }
-      @Override
       public Object getIdentifier() {
         // TODO Auto-generated method stub
         return "G";
@@ -191,7 +188,6 @@ public class Controller implements WindowFocusListener, ActionListener{
     view.setVisible(false);
   }
 
-  @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource().equals(view.getJbtnExit())) {
       view.setVisible(false);
