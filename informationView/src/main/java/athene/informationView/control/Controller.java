@@ -127,6 +127,29 @@ public class Controller implements WindowFocusListener, ActionListener{
       }
     });
 
+
+    c.addDictionary(new VDictionaryWeb() {
+      
+      @Override
+      protected String getURL(String xsearchWord) {
+        return "http://m.wolframalpha.com/input/?i=x&x=0&y=0";
+      }
+
+      @Override
+      protected boolean demandMobileVersion() {
+        return false;
+      }
+      @Override
+      protected double getZoomFactor() {
+        // TODO Auto-generated method stub
+        return 0.9;
+      }
+      public Object getIdentifier() {
+        // TODO Auto-generated method stub
+        return "Wo";
+      }
+    });
+
     c.displayInformationWindow(
         r.createScreenCapture(new Rectangle(0, 0, 
             Toolkit.getDefaultToolkit().getScreenSize().width, 
@@ -140,10 +163,7 @@ public class Controller implements WindowFocusListener, ActionListener{
         
         boolean running = true;
         while (running) {
-          System.out.println("Enter command:");
-          String[] task = reader.readLine().split(" ");
-
-          c.displayInformation(task[0]);
+          c.displayInformation(reader.readLine());
           
         }
         reader.close();
