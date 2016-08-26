@@ -52,9 +52,9 @@ public class DoubleButton extends JPanel {
     jbtnPress.setSize(xwidth, xheight);
     jlblBackground.setSize(xwidth, xheight);
     biSelected = Utils.resize(
-        "/athene/informationView/res/feldSingleSelected.png",
+        "/spotlight/athene/res/feldSingleSelected.png",
         getWidth(), getHeight());
-    biNormal = Utils.resize("/athene/informationView/res/feldSingle.png",
+    biNormal = Utils.resize("/spotlight/athene/res/feldSingle.png",
         getWidth(), getHeight());
     if (selected) {
       jlblBackground.setIcon(new ImageIcon(biSelected)); 
@@ -94,9 +94,9 @@ public class DoubleButton extends JPanel {
     jbtnPress.setSize(xwidth, xheight);
     jlblBackground.setSize(xwidth, xheight);
     biSelected = Utils.resize(
-        "/athene/informationView/res/feldSingleSelected.png",
+        "/spotlight/athene/res/feldSingleSelected.png",
         getWidth(), getHeight());
-    biNormal = Utils.resize("/athene/informationView/res/feldSingle.png",
+    biNormal = Utils.resize("/spotlight/athene/res/feldSingle.png",
         getWidth(), getHeight());
     if (selected) {
       jlblBackground.setIcon(new ImageIcon(biSelected)); 

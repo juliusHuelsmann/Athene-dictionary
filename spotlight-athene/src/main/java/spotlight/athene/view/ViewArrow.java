@@ -10,8 +10,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import spotlight.athene.view.specializedUtils.OpFrame;
+
 @SuppressWarnings({ "serial" })
-class ViewArrow extends JFrame {
+class ViewArrow extends OpFrame {
 
   /**
    * The (preprocessed) background image.
@@ -52,7 +54,7 @@ class ViewArrow extends JFrame {
 
     biWindowShapeInverted = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
     biWindowShape = ViewInformation
-        .preprocessBackground("/athene/informationView/res/bgArch.png",
+        .preprocessBackground("/spotlight/athene/res/bgArch.png",
         getSize(), null, biWindowShapeInverted);
 
     jlblWindowShape.setIcon(new ImageIcon(biWindowShape));
@@ -74,7 +76,7 @@ class ViewArrow extends JFrame {
 
     jlblBackground = new JLabel();
     jlblBackground.setSize(getSize());
-    super.add(jlblBackground);
+//    super.add(jlblBackground);
     
     preprocessArchBackground();
     new Thread() {

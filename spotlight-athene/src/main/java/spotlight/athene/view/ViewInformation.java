@@ -22,11 +22,12 @@ import javax.swing.SwingConstants;
 import spotlight.athene.view.dictionaries.VDictionary;
 import spotlight.athene.view.dictionaries.VDictionaryWeb;
 import spotlight.athene.view.specializedUtils.DoubleButton;
+import spotlight.athene.view.specializedUtils.OpFrame;
 import spotlight.athene.view.specializedUtils.ViewDictSwitcher;
 import utils.Utils;
 
 @SuppressWarnings("serial")
-public class ViewInformation extends JFrame {
+public class ViewInformation extends OpFrame {
   
   
   /**
@@ -136,7 +137,7 @@ public class ViewInformation extends JFrame {
 
     jlblBackground = new JLabel();
     jlblBackground.setSize(getSize());
-    super.add(jlblBackground);
+//    super.add(jlblBackground);
     
 
     // load Bi-background
@@ -232,7 +233,7 @@ public class ViewInformation extends JFrame {
   
   
   private void preprocessShapeBackground() {
-    biWindowShape = preprocessBackground("/athene/informationView/res/bgShape.png",
+    biWindowShape = preprocessBackground("/spotlight/athene/res/bgShape.png",
         getSize(), new Rectangle(4, 4, dimStandardWindow.width - 9, dimStandardWindow.height - 9), null);
 
     jlblWindowShape.setIcon(new ImageIcon(biWindowShape));

@@ -1,3 +1,4 @@
+package spotlight.athene.view.specializedUtils;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.PathIterator;
@@ -9,29 +10,49 @@ import javax.swing.*;
 
 import static java.awt.GraphicsDevice.WindowTranslucency.*;
 
-public class Test extends JFrame {
+public class OpFrame extends JFrame {
   
   //TODO: einen eigenen gradientPaint schreiben.
   BufferedImage bi;
   Rectangle rectB;
   boolean b[][] = null;
-    public Test() {
-      super("GradientTranslucentWindow");
+    public OpFrame() {
+      super("fu");
+      
+      final int wid = 700;
+      rectB = new Rectangle(0, 0, wid, wid);
+      b = new boolean[wid][wid];
+      for (int i = 0; i < b.length; i++) {
+		for (int j = 0; j < b[0].length; j++) {
+			final int absx = Math.abs(i - wid/2);
+			final int absy = Math.abs(j - wid/2);
+			
+			b[i][j] = (absx <= 50 || absy <= 50);
+		}
+      }
+      
+      
       Shape shape = new Shape() {
         
         public boolean intersects(double x, double y, double w, double h) {
-          // TODO Auto-generated method stub
-          return false;
+
+            for (int i = 0; i < b.length; i++) {
+	      		for (int j = 0; j < b[0].length; j++) {
+	      			if (b[i][j]) {
+	      				return true;
+	      			}
+	      		}
+      		}
+        	return false;
         }
         
         public boolean intersects(Rectangle2D r) {
-          // TODO Auto-generated method stub
-          return false;
+          return intersects(r.getX(), r.getY(), r.getWidth(), r.getHeight());
         }
         
         public PathIterator getPathIterator(AffineTransform at, double flatness) {
-          // TODO Auto-generated method stub
-          return null;
+        	return null;
+        	// TODO Auto-generated method stub
         }
         
         public PathIterator getPathIterator(AffineTransform at) {
@@ -71,11 +92,11 @@ public class Test extends JFrame {
           return contains(p.getX(), p.getY());
         }
       };
+      super.setUndecorated(true);
 //      setShape(shape);
-        super.setUndecorated(true);
         setBackground(new Color(0,0,0,0));
-        setSize(new Dimension(300,200));
         setLocationRelativeTo(null);
+        super.setSize(50, 50);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel() {
@@ -86,22 +107,25 @@ public class Test extends JFrame {
                     final int G = 240;
                     final int B = 240;
 
-                    Paint p =
-                        new GradientPaint(0.0f, 0.0f, new Color(R, G, B, 0),
-                            0.0f, getHeight(), new Color(R, G, B, 255), true);
-                    Graphics2D g2d = (Graphics2D)g;
-                    g2d.setPaint(p);
-                    g2d.fillRect(0, 0, getWidth(), getHeight());
+//                    Paint p =
+//                        new GradientPaint(0.0f, 0.0f, new Color(R, G, B, 0),
+//                            0.0f, getHeight(), new Color(R, G, B, 255), true);
+//                    Graphics2D g2d = (Graphics2D)g;
+//                    g2d.setPaint(p);
+//                    g2d.fillRect(0, 0, getWidth(), getHeight());
                 }
             }
         };
         setContentPane(panel);
-        setLayout(new GridBagLayout());
+        setLayout(null);
+        if (false) {
         JButton b = new JButton("I am a Button");
+        b.setSize(getSize());
         b.setOpaque(false);
         b.setContentAreaFilled(false);
         b.setBorder(null);
         add(b);
+        }
     }
 
     public static void main(String[] args) {
@@ -119,13 +143,13 @@ public class Test extends JFrame {
                 System.exit(0);
         }
 
-        JFrame.setDefaultLookAndFeelDecorated(true);
+//        JFrame.setDefaultLookAndFeelDecorated(true);
 
         // Create the GUI on the event-dispatching thread
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-              Test gtw = new
-                  Test();
+              OpFrame gtw = new
+                  OpFrame();
 
                 // Display the window.
                 gtw.setVisible(true);
