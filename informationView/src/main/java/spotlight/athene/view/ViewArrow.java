@@ -1,4 +1,4 @@
-package athene.informationView.view;
+package spotlight.athene.view;
 
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;

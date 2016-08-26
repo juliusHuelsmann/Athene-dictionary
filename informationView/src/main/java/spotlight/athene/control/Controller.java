@@ -1,4 +1,4 @@
-package athene.informationView.control;
+package spotlight.athene.control;
 
 import java.awt.AWTException;
 import java.awt.Component;
@@ -15,11 +15,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import athene.informationView.view.ViewInformation;
-import athene.informationView.view.dictionaries.Dictionaries;
-import athene.informationView.view.dictionaries.VDictionary;
-import athene.informationView.view.dictionaries.VDictionaryWeb;
-import athene.informationView.view.specializedUtils.ViewDictSwitcher;
+import spotlight.athene.view.ViewInformation;
+import spotlight.athene.view.dictionaries.Dictionaries;
+import spotlight.athene.view.dictionaries.VDictionary;
+import spotlight.athene.view.dictionaries.VDictionaryWeb;
+import spotlight.athene.view.specializedUtils.ViewDictSwitcher;
 
 
 public class Controller implements WindowFocusListener, ActionListener{

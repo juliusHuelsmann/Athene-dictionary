@@ -1,4 +1,4 @@
-package athene.informationView.view.specializedUtils;
+package spotlight.athene.view.specializedUtils;
 
 import java.awt.Dimension;
 import java.awt.Point;

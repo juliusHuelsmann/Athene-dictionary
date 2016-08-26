@@ -5,4 +5,4 @@
  * @author juli
  *
  */
-package athene.informationView.view;
+package spotlight.athene.view;

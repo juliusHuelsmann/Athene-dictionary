@@ -1,8 +1,9 @@
-package athene.informationView.view.dictionaries;
+package spotlight.athene.view.dictionaries;
 
 import java.awt.Container;
 import java.awt.Dimension;
 
+import spotlight.athene.view.ViewInformation;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.EventHandler;
@@ -13,7 +14,6 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import athene.informationView.view.ViewInformation;
 
 
 @SuppressWarnings({ "restriction", "serial" })

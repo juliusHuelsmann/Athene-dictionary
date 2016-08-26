@@ -1,4 +1,4 @@
-package athene.informationView.view.dictionaries;
+package spotlight.athene.view.dictionaries;
 
 import java.awt.Container;
 

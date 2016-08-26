@@ -1,4 +1,4 @@
-package athene.informationView.view;
+package spotlight.athene.view;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -19,10 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import athene.informationView.view.dictionaries.VDictionary;
-import athene.informationView.view.dictionaries.VDictionaryWeb;
-import athene.informationView.view.specializedUtils.DoubleButton;
-import athene.informationView.view.specializedUtils.ViewDictSwitcher;
+import spotlight.athene.view.dictionaries.VDictionary;
+import spotlight.athene.view.dictionaries.VDictionaryWeb;
+import spotlight.athene.view.specializedUtils.DoubleButton;
+import spotlight.athene.view.specializedUtils.ViewDictSwitcher;
 import utils.Utils;
 
 @SuppressWarnings("serial")
