@@ -10,10 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import spotlight.athene.view.specializedUtils.OpFrame;
-
 @SuppressWarnings({ "serial" })
-class ViewArrow extends OpFrame {
+class ViewArrow extends opaqueFrame.OpFrame {
 
   /**
    * The (preprocessed) background image.

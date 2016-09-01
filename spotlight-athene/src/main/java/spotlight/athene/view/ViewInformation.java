@@ -19,10 +19,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import movelistener.control.Movelistener;
+import opaqueFrame.OpFrame;
 import spotlight.athene.view.dictionaries.VDictionary;
 import spotlight.athene.view.dictionaries.VDictionaryWeb;
 import spotlight.athene.view.specializedUtils.DoubleButton;
-import spotlight.athene.view.specializedUtils.OpFrame;
 import spotlight.athene.view.specializedUtils.ViewDictSwitcher;
 import utils.Utils;
 
@@ -98,6 +99,10 @@ public class ViewInformation extends OpFrame {
     super.setSize(dimStandardWindow);
     super.setVisible(false);
     super.setResizable(false);
+    
+//    Movelistener ml = new Movelistener(this);
+//    super.addMouseListener(ml);
+//    super.addMouseMotionListener(ml);
     vecDict = new Vector<ViewDictSwitcher>();
 
     jbtnExit = new DoubleButton("x");
@@ -147,6 +152,10 @@ public class ViewInformation extends OpFrame {
 
     va = new ViewArrow();
     init();
+  }
+  
+  public void setLocation(final int xx, final int xy) {
+	  super.setLocation(xx, xy);
   }
   
   public void setTitle(final String xtitle) {
@@ -346,6 +355,12 @@ public class ViewInformation extends OpFrame {
     this.setLocation(xbiScreenshot, newXW, newYW);
   }
 
+  public void setVisible(final boolean vis) {
+	  super.setVisible(vis);
+	  if (va != null) {
+		  va.setVisible(vis);
+	  }
+  }
   public void setLocation(final BufferedImage xbiB, final int x, final int y) {
 
     super.setLocation(x, y);
