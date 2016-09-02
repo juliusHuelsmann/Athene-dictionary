@@ -1,7 +1,6 @@
 package spotlight.athene.view.dictionaries;
 
 import java.awt.Container;
-
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")

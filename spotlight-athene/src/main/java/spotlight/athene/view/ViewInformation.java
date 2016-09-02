@@ -21,8 +21,8 @@ import javax.swing.SwingConstants;
 
 import movelistener.control.Movelistener;
 import opaqueFrame.OpFrame;
-import spotlight.athene.view.dictionaries.VDictionary;
 import spotlight.athene.view.dictionaries.VDictionaryWeb;
+import spotlight.athene.view.dictionaries.ViewDictSettings;
 import spotlight.athene.view.specializedUtils.DoubleButton;
 import spotlight.athene.view.specializedUtils.ViewDictSwitcher;
 import utils.Utils;
@@ -43,12 +43,6 @@ public class ViewInformation extends OpFrame {
   private BufferedImage biWindowShape;
   
   /**
-   * The standard size of the JFrame that is not changeable and chosen 
-   * according to the size of the background image that is used.
-   */
-  private final static Dimension dimStandardWindow = new Dimension(350, 450);//= new Dimension(262, 357);
-  
-  /**
    * The relative displacement of the window towards the location of the
    * word. Depends on the location of the arch inside the 
    * {@link #biWindowShape}.
@@ -57,11 +51,6 @@ public class ViewInformation extends OpFrame {
    */
   private final Point pntDisplacementWindow = new Point(-151, 118);
   
-  
-  /**
-   * Contains the screenshot image given by #display function.
-   */
-  private JLabel jlblBackground;
 
   
   /**
@@ -93,10 +82,11 @@ public class ViewInformation extends OpFrame {
 //    AWTUtilities.setWindowOpaque(this, false); 
   }
   public ViewInformation(final WindowFocusListener wf) {
-//    init();
+    super();
     super.setUndecorated(true);
     super.setLayout(null);
-    super.setSize(dimStandardWindow);
+    super.setSize(ViewDictSettings.dimStandardWindow.width, 
+        ViewDictSettings.dimStandardWindow.height);
     super.setVisible(false);
     super.setResizable(false);
     
@@ -131,7 +121,7 @@ public class ViewInformation extends OpFrame {
     jpnlContent.setOpaque(false);
     jpnlContent.setLayout(null);
     jpnlContent.setLocation(jpnlSwitcher.getX(), jpnlSwitcher.getHeight() + jpnlSwitcher.getY());
-    jpnlContent.setSize(getAvailableSpace());
+    jpnlContent.setSize(ViewDictSettings.getAvailableSpace());
     super.add(jpnlContent);
     
 
@@ -140,17 +130,13 @@ public class ViewInformation extends OpFrame {
     jlblWindowShape.setSize(getSize());
     super.add(jlblWindowShape);
 
-    jlblBackground = new JLabel();
-    jlblBackground.setSize(getSize());
-//    super.add(jlblBackground);
-    
 
     // load Bi-background
     preprocessShapeBackground();
     
 
 
-    va = new ViewArrow();
+//    va = new ViewArrow();
     init();
   }
   
@@ -243,7 +229,9 @@ public class ViewInformation extends OpFrame {
   
   private void preprocessShapeBackground() {
     biWindowShape = preprocessBackground("/spotlight/athene/res/bgShape.png",
-        getSize(), new Rectangle(4, 4, dimStandardWindow.width - 9, dimStandardWindow.height - 9), null);
+        getSize(), new Rectangle(4, 4, 
+            ViewDictSettings.dimStandardWindow.width - 9, 
+            ViewDictSettings.dimStandardWindow.height - 9), null);
 
     jlblWindowShape.setIcon(new ImageIcon(biWindowShape));
   }
@@ -290,9 +278,9 @@ public class ViewInformation extends OpFrame {
     //
     // Compute the new y coordinate of the window
     final int newYBottomW = xLocationText.y + pntDisplacementWindow.y;
-    final int newYBottomA = xLocationText.y + va.pntDisplacementArrow.y;
+    final int newYBottomA = xLocationText.y + ViewArrow.pntDisplacementArrow.y;
     final int newYTopW = xLocationText.y - pntDisplacementWindow.y - getHeight();
-    final int newYTopA = xLocationText.y - va.pntDisplacementArrow.y - va.getHeight();
+    final int newYTopA = xLocationText.y - ViewArrow.pntDisplacementArrow.y - ViewArrow.dimStandardArrow.height;
     final int newYW;
     final int newYA;
     final boolean inverted;
@@ -343,16 +331,18 @@ public class ViewInformation extends OpFrame {
       newXA = 0;
     }
     
-    if (newXA + va.getWidth() > Toolkit.getDefaultToolkit().getScreenSize().getWidth()) {
-      newXA = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - va.getWidth());
+    if (newXA + ViewArrow.dimStandardArrow.width > Toolkit.getDefaultToolkit().getScreenSize().getWidth()) {
+      newXA = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - ViewArrow.dimStandardArrow.width);
       
       if (newXA <= 0) {
         System.out.println("unable to display window.");
         return;
       }
     }
+    if (va != null)
     va.setLocation(xbiScreenshot, newXA, newYA, inverted);
-    this.setLocation(xbiScreenshot, newXW, newYW);
+    this.setLocation(newXW, newYW);
+    this.setVisible(true);
   }
 
   public void setVisible(final boolean vis) {
@@ -368,27 +358,7 @@ public class ViewInformation extends OpFrame {
     //
     //
     // Preprocess the image.
-    int[] rgbArray = new int[getWidth() * getHeight()];
-    xbiB.getRGB(getX(), getY(), getWidth(), 
-        getHeight(), rgbArray, 0, getWidth());
-    BufferedImage biBackground = new BufferedImage(getWidth(), getHeight(), 
-        BufferedImage.TYPE_INT_RGB);
-    biBackground.setRGB(0, 0, getWidth(), getHeight(), rgbArray, 0, getWidth());
-    jlblBackground.setIcon(new ImageIcon(biBackground));
     super.setVisible(true);
-  }
-  /**
-   * @return the dimStandardWindow
-   */
-  public static Dimension getDimStandardWindow() {
-    return dimStandardWindow;
-  }
-  /**
-   * @return the dimStandardWindow
-   */
-  public static Dimension getAvailableSpace() {
-    return new Dimension(dimStandardWindow.width - 10,
-        dimStandardWindow.height - 83);
   }
   /**
    * @return the vecDict

@@ -2,8 +2,7 @@ package spotlight.athene.view.dictionaries;
 
 import java.awt.Container;
 
-
-public interface VDictionary  {
+public interface VDictionary {
   
   
   /**

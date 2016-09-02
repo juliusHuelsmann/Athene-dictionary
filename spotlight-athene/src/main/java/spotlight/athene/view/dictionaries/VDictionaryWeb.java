@@ -3,7 +3,6 @@ package spotlight.athene.view.dictionaries;
 import java.awt.Container;
 import java.awt.Dimension;
 
-import spotlight.athene.view.ViewInformation;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.EventHandler;
@@ -81,7 +80,6 @@ public abstract class VDictionaryWeb extends JFXPanel implements VDictionary {
   
   
   
-  
 
 
   /**
@@ -118,7 +116,7 @@ public abstract class VDictionaryWeb extends JFXPanel implements VDictionary {
    * @param xtext the word that is to be searched for.
    */
   public VDictionaryWeb(final String xtext) {
-    this(ViewInformation.getAvailableSpace(), xtext);
+    this(ViewDictSettings.getAvailableSpace(), xtext);
   }
   
   
@@ -159,7 +157,7 @@ public abstract class VDictionaryWeb extends JFXPanel implements VDictionary {
    * Constructor: initializes the Panel.
    */
   public VDictionaryWeb() {
-    this(ViewInformation.getAvailableSpace());
+    this(ViewDictSettings.getAvailableSpace());
   }
 
   /**

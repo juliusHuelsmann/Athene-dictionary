@@ -28,14 +28,14 @@ class ViewArrow extends opaqueFrame.OpFrame {
    * The standard size of the JFrame that is not changeable and chosen 
    * according to the size of the background image that is used.
    */
-  protected final Dimension dimStandardArrow = new Dimension(39, 118);
+  protected final static Dimension dimStandardArrow = new Dimension(39, 118);
 
   /**
    * The relative displacement of the window towards the location of the
    * word. Depends on the location of the arch inside the 
    * {@link #biWindowShape}.
    */
-  protected final Point pntDisplacementArrow = new Point(-35, 5);
+  protected final static Point pntDisplacementArrow = new Point(-35, 5);
 
   /**
    * Contains the screenshot image given by #display function.
@@ -63,7 +63,7 @@ class ViewArrow extends opaqueFrame.OpFrame {
     this.getRootPane().putClientProperty("Window.shadow", Boolean.FALSE);
     super.setUndecorated(true);
     super.setLayout(null);
-    super.setSize(dimStandardArrow);
+    super.setSize(dimStandardArrow.width, dimStandardArrow.height);
     super.setVisible(false);
     super.setResizable(false);
 
@@ -77,23 +77,23 @@ class ViewArrow extends opaqueFrame.OpFrame {
 //    super.add(jlblBackground);
     
     preprocessArchBackground();
-    new Thread() {
-      public void run() {
-        //fadeout
-        final int maxIter = 50;
-
-        // Determine if the GraphicsDevice supports translucency.
-        GraphicsEnvironment ge = 
-            GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice gd = ge.getDefaultScreenDevice();
-        //If translucent windows aren't supported, exit.
-        
-        for (int i = 0; i < maxIter && gd.isWindowTranslucencySupported(
-            GraphicsDevice.WindowTranslucency.PERPIXEL_TRANSLUCENT); i++) {
-          
-        }
-      }
-    } .start();
+//    new Thread() {
+//      public void run() {
+//        //fadeout
+//        final int maxIter = 50;
+//
+//        // Determine if the GraphicsDevice supports translucency.
+//        GraphicsEnvironment ge = 
+//            GraphicsEnvironment.getLocalGraphicsEnvironment();
+//        GraphicsDevice gd = ge.getDefaultScreenDevice();
+//        //If translucent windows aren't supported, exit.
+//        
+//        for (int i = 0; i < maxIter && gd.isWindowTranslucencySupported(
+//            GraphicsDevice.WindowTranslucency.PERPIXEL_TRANSLUCENT); i++) {
+//          
+//        }
+//      }
+//    } .start();
   }
 
   public void setLocation(final BufferedImage xbiB, final int x, final int y, final boolean shifted) {
